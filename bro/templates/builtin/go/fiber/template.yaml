@@ -1,0 +1,4 @@
+name: fiber
+language: go
+framework: fiber
+description: fiber project template

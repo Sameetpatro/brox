@@ -1,0 +1,4 @@
+name: default
+language: nextjs
+framework: default
+description: default project template

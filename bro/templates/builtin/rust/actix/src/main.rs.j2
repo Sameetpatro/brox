@@ -1,0 +1,29 @@
+use actix_web::{get, web, App, HttpResponse, HttpServer, Responder};
+use serde_json::json;
+
+#[get("/")]
+async fn root() -> impl Responder {
+    HttpResponse::Ok().json(json!({
+        "message": "Welcome to {{ display_name }}!",
+        "status": "running"
+    }))
+}
+
+#[get("/health")]
+async fn health() -> impl Responder {
+    HttpResponse::Ok().json(json!({"status": "healthy"}))
+}
+
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    println!("🚀 {{ display_name }} running on http://localhost:8080");
+
+    HttpServer::new(|| {
+        App::new()
+            .service(root)
+            .service(health)
+    })
+    .bind("0.0.0.0:8080")?
+    .run()
+    .await
+}

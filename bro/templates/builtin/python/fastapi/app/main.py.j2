@@ -1,0 +1,57 @@
+"""{{ display_name }} — FastAPI Application."""
+
+from contextlib import asynccontextmanager
+from collections.abc import AsyncIterator
+
+from fastapi import FastAPI
+{% if has_swagger %}
+from fastapi.openapi.utils import get_openapi
+{% endif %}
+{% if has_redis %}
+from app.core.redis import redis_client
+{% endif %}
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI) -> AsyncIterator[None]:
+    """Application lifespan — startup and shutdown."""
+{% if has_redis %}
+    # Connect to Redis
+    await redis_client.initialize()
+{% endif %}
+    yield
+{% if has_redis %}
+    # Disconnect from Redis
+    await redis_client.close()
+{% endif %}
+
+
+app = FastAPI(
+    title="{{ display_name }}",
+    description="{{ display_name }} API",
+    version="0.1.0",
+    lifespan=lifespan,
+{% if has_swagger %}
+    docs_url="/docs",
+    redoc_url="/redoc",
+{% endif %}
+)
+
+
+@app.get("/")
+async def root() -> dict[str, str]:
+    """Root endpoint."""
+    return {"message": "Welcome to {{ display_name }}!", "status": "running"}
+
+
+@app.get("/health")
+async def health() -> dict[str, str]:
+    """Health check endpoint."""
+    return {"status": "healthy"}
+{% if has_jwt %}
+
+
+from app.api.routes import auth  # noqa: E402
+
+app.include_router(auth.router, prefix="/api/v1/auth", tags=["Authentication"])
+{% endif %}

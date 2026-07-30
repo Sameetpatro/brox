@@ -1,0 +1,4 @@
+name: actix
+language: rust
+framework: actix
+description: actix project template

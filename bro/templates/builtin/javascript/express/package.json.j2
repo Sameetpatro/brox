@@ -1,0 +1,23 @@
+{
+  "name": "{{ project_name }}",
+  "version": "0.1.0",
+  "description": "{{ display_name }}",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.18.0"{% if has_postgresql %},
+    "pg": "^8.12.0"{% endif %}{% if has_redis %},
+    "ioredis": "^5.4.0"{% endif %}{% if has_jwt %},
+    "jsonwebtoken": "^9.0.0",
+    "bcryptjs": "^2.4.3"{% endif %}
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"{% if has_testing %},
+    "jest": "^29.7.0"{% endif %}{% if has_linter %},
+    "eslint": "^9.0.0"{% endif %}
+  }
+}

@@ -1,0 +1,4 @@
+name: django
+language: python
+framework: django
+description: django project template

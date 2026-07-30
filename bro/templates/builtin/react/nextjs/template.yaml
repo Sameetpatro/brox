@@ -1,0 +1,4 @@
+name: nextjs
+language: react
+framework: nextjs
+description: nextjs project template

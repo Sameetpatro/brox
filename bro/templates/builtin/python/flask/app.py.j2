@@ -1,0 +1,22 @@
+"""{{ display_name }} — Flask Application."""
+
+from flask import Flask, jsonify
+
+
+def create_app() -> Flask:
+    """Application factory."""
+    app = Flask(__name__)
+    app.config.from_prefixed_env()
+
+    @app.route("/")
+    def root():
+        return jsonify({"message": "Welcome to {{ display_name }}!", "status": "running"})
+
+    @app.route("/health")
+    def health():
+        return jsonify({"status": "healthy"})
+
+    return app
+
+
+app = create_app()

@@ -1,0 +1,4 @@
+name: vite
+language: react
+framework: vite
+description: vite project template

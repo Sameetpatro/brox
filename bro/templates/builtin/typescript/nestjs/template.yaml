@@ -1,0 +1,4 @@
+name: nestjs
+language: typescript
+framework: nestjs
+description: nestjs project template

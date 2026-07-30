@@ -1,0 +1,58 @@
+[project]
+name = "{{ project_name }}"
+version = "0.1.0"
+description = "{{ display_name }} — built with FastAPI"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "pydantic>=2.0",
+    "pydantic-settings>=2.0",
+{% if has_postgresql %}
+    "sqlalchemy>=2.0",
+    "asyncpg>=0.29.0",
+    "alembic>=1.13.0",
+{% endif %}
+{% if has_redis %}
+    "redis>=5.0",
+{% endif %}
+{% if has_jwt %}
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.4",
+{% endif %}
+{% if has_dotenv %}
+    "python-dotenv>=1.0.0",
+{% endif %}
+]
+
+[project.optional-dependencies]
+dev = [
+{% if has_testing %}
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23.0",
+    "httpx>=0.27.0",
+{% endif %}
+{% if has_linter %}
+    "ruff>=0.5.0",
+{% endif %}
+{% if has_formatter %}
+    "ruff>=0.5.0",
+{% endif %}
+    "mypy>=1.10.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

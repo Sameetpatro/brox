@@ -1,0 +1,34 @@
+"""Application configuration using Pydantic Settings."""
+
+from pydantic_settings import BaseSettings
+
+
+class Settings(BaseSettings):
+    """Application settings loaded from environment variables."""
+
+    app_name: str = "{{ display_name }}"
+    app_env: str = "development"
+    app_debug: bool = True
+    app_port: int = 8000
+{% if has_postgresql %}
+
+    # Database
+    database_url: str = "postgresql://postgres:postgres@localhost:5432/{{ project_name_safe }}"
+{% endif %}
+{% if has_redis %}
+
+    # Redis
+    redis_url: str = "redis://localhost:6379/0"
+{% endif %}
+{% if has_jwt %}
+
+    # JWT
+    jwt_secret_key: str = "your-secret-key-change-in-production"
+    jwt_algorithm: str = "HS256"
+    jwt_expiration_minutes: int = 30
+{% endif %}
+
+    model_config = {"env_file": ".env", "case_sensitive": False}
+
+
+settings = Settings()

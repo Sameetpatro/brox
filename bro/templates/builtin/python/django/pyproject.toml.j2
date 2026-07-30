@@ -1,0 +1,22 @@
+[project]
+name = "{{ project_name }}"
+version = "0.1.0"
+description = "{{ display_name }}"
+requires-python = ">=3.12"
+dependencies = [
+    "django>=5.0",
+{% if has_postgresql %}
+    "psycopg2-binary>=2.9",
+{% endif %}
+{% if has_redis %}
+    "django-redis>=5.4",
+{% endif %}
+{% if has_jwt %}
+    "djangorestframework>=3.15",
+    "djangorestframework-simplejwt>=5.3",
+{% endif %}
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

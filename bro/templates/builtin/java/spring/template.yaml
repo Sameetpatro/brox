@@ -1,0 +1,4 @@
+name: spring
+language: java
+framework: spring
+description: spring project template

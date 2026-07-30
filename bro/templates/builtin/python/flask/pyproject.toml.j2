@@ -1,0 +1,23 @@
+[project]
+name = "{{ project_name }}"
+version = "0.1.0"
+description = "{{ display_name }}"
+requires-python = ">=3.12"
+dependencies = [
+    "flask>=3.0",
+{% if has_postgresql %}
+    "flask-sqlalchemy>=3.1",
+    "psycopg2-binary>=2.9",
+{% endif %}
+{% if has_redis %}
+    "flask-caching>=2.1",
+    "redis>=5.0",
+{% endif %}
+{% if has_jwt %}
+    "flask-jwt-extended>=4.6",
+{% endif %}
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

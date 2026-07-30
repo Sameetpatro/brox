@@ -1,0 +1,4 @@
+name: gin
+language: go
+framework: gin
+description: gin project template

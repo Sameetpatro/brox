@@ -1,0 +1,4 @@
+name: flask
+language: python
+framework: flask
+description: flask project template
