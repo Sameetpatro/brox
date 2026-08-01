@@ -1,7 +1,7 @@
-# 🚀 Bro — Developer Workspace Manager
+# 🚀 Broz — Developer Workspace Manager
 
-[![CI](https://github.com/sameetpatro/brox/actions/workflows/ci.yml/badge.svg)](https://github.com/sameetpatro/brox/actions/workflows/ci.yml)
-[![PyPI](https://img.shields.io/pypi/v/brox.svg)](https://pypi.org/project/brox/)
+[![CI](https://github.com/sameetpatro/broz/actions/workflows/ci.yml/badge.svg)](https://github.com/sameetpatro/broz/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/broz.svg)](https://pypi.org/project/broz/)
 ![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 ![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey)
@@ -14,17 +14,17 @@
 
 | Command | Description |
 |---------|-------------|
-| `brox start <name>` | Create a new project with an interactive TUI wizard |
-| `brox start --quick <name>` | Quick mode — only ask language & framework |
-| `brox follow` | Learning mode — analyze project architecture |
-| `brox save <name>` | Save current project as a reusable template |
-| `brox use` | Create a project from a saved template |
-| `brox delete` | Delete a saved template |
-| `brox clone` | Clone a repo with analysis and post-clone options |
-| `brox check` | Check installed development tools |
-| `brox config` | View and edit Bro configuration |
-| `brox ai` | AI-powered development assistant |
-| `brox update` | Update Bro and templates |
+| `broz start <name>` | Create a new project with an interactive TUI wizard |
+| `broz start --quick <name>` | Quick mode — only ask language & framework |
+| `broz follow` | Learning mode — analyze project architecture |
+| `broz save <name>` | Save current project as a reusable template |
+| `broz use` | Create a project from a saved template |
+| `broz delete` | Delete a saved template |
+| `broz clone` | Clone a repo with analysis and post-clone options |
+| `broz check` | Check installed development tools |
+| `broz config` | View and edit Broz configuration |
+| `broz ai` | AI-powered development assistant |
+| `broz update` | Update Broz and templates |
 
 ## 🛠️ Supported Languages & Frameworks
 
@@ -44,45 +44,45 @@
 
 ```bash
 # With pipx (recommended)
-pipx install brox
+pipx install broz
 
 # With pip
-pip install brox
+pip install broz
 
 # From source
-git clone https://github.com/sameetpatro/brox.git
-cd brox
+git clone https://github.com/sameetpatro/broz.git
+cd broz
 uv sync
-uv run brox --help
+uv run broz --help
 ```
 
 ## 🚀 Quick Start
 
 ```bash
 # Create a new FastAPI project
-bro start my-api
+broz start my-api
 
 # Quick mode (uses defaults)
-bro start --quick my-api
+broz start --quick my-api
 
 # Check your dev environment
-bro check
+broz check
 
 # Learn a project's structure
 cd existing-project
-bro follow
-bro save my-template
+broz follow
+broz save my-template
 
 # Use a saved template
-bro use
+broz use
 
 # AI-powered project creation
-bro ai
+broz ai
 ```
 
 ## ⚙️ Configuration
 
-Bro stores configuration in `~/.bro/config.yaml`:
+Broz stores configuration in `~/.bro/config.yaml`:
 
 ```yaml
 default_language: python
@@ -93,7 +93,7 @@ always_testing: true
 always_linter: true
 ```
 
-Edit interactively with `bro config`.
+Edit interactively with `broz config`.
 
 ## 🏗️ Architecture
 
@@ -115,10 +115,10 @@ bro/
 
 ## 🤖 AI Features
 
-Bro AI requires an API key:
+Broz AI requires an API key:
 
 ```bash
-bro config
+broz config
 # Set ai_api_key to your OpenAI API key
 ```
 

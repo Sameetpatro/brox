@@ -16,7 +16,7 @@ STYLES_PATH = Path(__file__).parent / "styles" / "app.tcss"
 class BroApp(App[ReturnType]):
     """Base Textual application for all Bro TUI screens."""
 
-    TITLE = "Bro"
+    TITLE = "Broz"
     SUB_TITLE = "Developer Workspace Manager"
     CSS_PATH = STYLES_PATH
 

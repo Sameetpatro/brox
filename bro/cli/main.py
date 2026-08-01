@@ -9,8 +9,8 @@ import typer
 from bro import __version__
 
 app = typer.Typer(
-    name="bro",
-    help="🚀 Bro — The Developer Workspace Manager",
+    name="broz",
+    help="🚀 Broz — The Developer Workspace Manager",
     no_args_is_help=True,
     rich_markup_mode="rich",
     pretty_exceptions_enable=True,
@@ -22,7 +22,7 @@ def version_callback(value: bool) -> None:
     """Show version and exit."""
     if value:
         from bro.utils.console import console
-        console.print(f"[bold cyan]Bro[/bold cyan] v{__version__}")
+        console.print(f"[bold cyan]Broz[/bold cyan] v{__version__}")
         raise typer.Exit()
 
 
@@ -33,7 +33,7 @@ def main(
         typer.Option("--version", "-v", help="Show version.", callback=version_callback, is_eager=True),
     ] = None,
 ) -> None:
-    """🚀 Bro — The Developer Workspace Manager.
+    """🚀 Broz — The Developer Workspace Manager.
 
     Create projects, save templates, reuse templates, learn project structures,
     clone repositories, and use AI to automate development tasks.

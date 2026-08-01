@@ -1,5 +1,5 @@
 [project]
-name = "brox"
+name = "broz"
 version = "1.0.0"
 description = "The fastest and smartest Developer Workspace Manager. Create, template, learn, clone, and AI-assist your projects."
 readme = "README.md"
@@ -59,15 +59,15 @@ dev = [
 ]
 
 [project.scripts]
-brox = "bro.cli.main:app"
+broz = "bro.cli.main:app"
 bro = "bro.cli.main:app"
 
 [project.urls]
-Homepage = "https://github.com/sameetpatro/brox"
-Repository = "https://github.com/sameetpatro/brox"
-Documentation = "https://github.com/sameetpatro/brox#readme"
-Issues = "https://github.com/sameetpatro/brox/issues"
-Changelog = "https://github.com/sameetpatro/brox/releases"
+Homepage = "https://github.com/sameetpatro/broz"
+Repository = "https://github.com/sameetpatro/broz"
+Documentation = "https://github.com/sameetpatro/broz#readme"
+Issues = "https://github.com/sameetpatro/broz/issues"
+Changelog = "https://github.com/sameetpatro/broz/releases"
 
 [build-system]
 requires = ["hatchling"]
