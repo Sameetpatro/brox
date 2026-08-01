@@ -1,6 +1,6 @@
 [project]
 name = "broz-cli"
-version = "1.2.3"
+version = "1.2.4"
 description = "The fastest and smartest Developer Workspace Manager. Create, template, learn, clone, and AI-assist your projects."
 readme = "README.md"
 license = { file = "LICENSE" }

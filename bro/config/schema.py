@@ -40,9 +40,9 @@ class BroConfig(BaseModel):
     github_default_private: bool = Field(default=True)
 
     # AI
-    ai_provider: str = Field(default="openai", description="AI provider: openai, anthropic, google")
+    ai_provider: str = Field(default="openrouter", description="AI provider: openrouter, openai, anthropic, google")
     ai_api_key: str = Field(default="", description="API key for AI provider")
-    ai_model: str = Field(default="gpt-4o", description="Model name")
+    ai_model: str = Field(default="google/gemini-2.0-flash-lite-001", description="Model name")
 
     # General
     open_vscode_after: bool = Field(default=False, description="Open VS Code after project creation")

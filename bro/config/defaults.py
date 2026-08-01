@@ -12,6 +12,9 @@ TEMPLATES_DIR = BRO_HOME / "templates"
 AUTH_FILE = BRO_HOME / "auth.yaml"
 LOG_FILE = BRO_HOME / "bro.log"
 
+# Default OpenRouter API Key provided for zero-config AI usage
+DEFAULT_OPENROUTER_API_KEY = ""
+
 # ─── Ignore patterns for template learning ────────────────────────────────────
 
 DEFAULT_IGNORE_PATTERNS: list[str] = [

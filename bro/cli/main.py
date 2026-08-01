@@ -11,11 +11,51 @@ from bro import __version__
 app = typer.Typer(
     name="broz",
     help="🚀 Broz — The Developer Workspace Manager",
-    no_args_is_help=True,
+    no_args_is_help=False,
     rich_markup_mode="rich",
     pretty_exceptions_enable=True,
     add_completion=True,
 )
+
+
+def print_help() -> None:
+    """Print custom styled help screen with commands and author credits."""
+    from rich.panel import Panel
+    from rich.table import Table
+
+    from bro.utils.console import console
+
+    console.print()
+    console.print(
+        Panel(
+            "[bold cyan]🚀 Broz — The Developer Workspace Manager[/bold cyan]\n"
+            "[dim]Create, template, learn, clone, and AI-assist your projects.[/dim]\n\n"
+            "[bold green]Sameet Patro built this[/bold green] ❤️\n"
+            "[dim]🔗 LinkedIn:[/dim] [link=https://www.linkedin.com/in/sameet-patro/][underline cyan]https://www.linkedin.com/in/sameet-patro/[/underline cyan][/link]",
+            title="[bold yellow]About Broz[/bold yellow]",
+            subtitle="[dim]by Sameet Patro[/dim]",
+            border_style="cyan",
+        )
+    )
+
+    table = Table(title="Available Commands", border_style="dim", header_style="bold cyan")
+    table.add_column("Command", style="bold yellow", width=12)
+    table.add_column("Description", style="white")
+
+    table.add_row("start", "🏗️  Create a new project with interactive wizard")
+    table.add_row("follow", "👀 Enter Learning Mode — analyze current project structure")
+    table.add_row("save", "💾 Save current project as a reusable template")
+    table.add_row("use", "📦 Create a project from a saved template")
+    table.add_row("delete", "🗑️  Delete a saved template")
+    table.add_row("clone", "📥 Clone a repository with analysis and options")
+    table.add_row("check", "🔍 Check installed development tools")
+    table.add_row("config", "⚙️  View and edit Bro configuration")
+    table.add_row("update", "🔄 Update Bro, templates, and internal assets")
+    table.add_row("ai", "🤖 Launch AI-powered development assistant")
+    table.add_row("help", "❓ Show this help message and author credits")
+
+    console.print(table)
+    console.print("\n[dim]Usage:[/dim] [bold cyan]bro <command> [options][/bold cyan]\n")
 
 
 def version_callback(value: bool) -> None:
@@ -26,21 +66,37 @@ def version_callback(value: bool) -> None:
         raise typer.Exit()
 
 
-@app.callback()
+def help_callback(value: bool) -> None:
+    """Show help screen and exit."""
+    if value:
+        print_help()
+        raise typer.Exit()
+
+
+@app.callback(invoke_without_command=True)
 def main(
+    ctx: typer.Context,
     version: Annotated[
         bool | None,
         typer.Option("--version", "-v", help="Show version.", callback=version_callback, is_eager=True),
     ] = None,
+    help_opt: Annotated[
+        bool | None,
+        typer.Option("-help", "--help", "-h", help="Show help screen.", callback=help_callback, is_eager=True),
+    ] = None,
 ) -> None:
-    """🚀 Broz — The Developer Workspace Manager.
-
-    Create projects, save templates, reuse templates, learn project structures,
-    clone repositories, and use AI to automate development tasks.
-    """
+    """🚀 Broz — The Developer Workspace Manager."""
+    if ctx.invoked_subcommand is None:
+        print_help()
 
 
 # ─── Commands ─────────────────────────────────────────────────────────────────
+
+
+@app.command("help")
+def show_help_cmd() -> None:
+    """❓ Show all commands and author info."""
+    print_help()
 
 
 @app.command()
