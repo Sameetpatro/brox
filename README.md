@@ -1,6 +1,6 @@
 # 🚀 Bro — Developer Workspace Manager
 
-[![CI](https://github.com/sameetpatro/bro/actions/workflows/ci.yml/badge.svg)](https://github.com/sameetpatro/bro/actions/workflows/ci.yml)
+[![CI](https://github.com/sameetpatro/brox/actions/workflows/ci.yml/badge.svg)](https://github.com/sameetpatro/brox/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/brox.svg)](https://pypi.org/project/brox/)
 ![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
@@ -50,8 +50,8 @@ pipx install brox
 pip install brox
 
 # From source
-git clone https://github.com/sameetpatro/bro.git
-cd bro
+git clone https://github.com/sameetpatro/brox.git
+cd brox
 uv sync
 uv run brox --help
 ```

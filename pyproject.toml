@@ -63,11 +63,11 @@ brox = "bro.cli.main:app"
 bro = "bro.cli.main:app"
 
 [project.urls]
-Homepage = "https://github.com/sameetpatro/bro"
-Repository = "https://github.com/sameetpatro/bro"
-Documentation = "https://github.com/sameetpatro/bro#readme"
-Issues = "https://github.com/sameetpatro/bro/issues"
-Changelog = "https://github.com/sameetpatro/bro/releases"
+Homepage = "https://github.com/sameetpatro/brox"
+Repository = "https://github.com/sameetpatro/brox"
+Documentation = "https://github.com/sameetpatro/brox#readme"
+Issues = "https://github.com/sameetpatro/brox/issues"
+Changelog = "https://github.com/sameetpatro/brox/releases"
 
 [build-system]
 requires = ["hatchling"]
