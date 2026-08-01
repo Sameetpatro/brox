@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from rich.text import Text
 from textual.app import ComposeResult
 from textual.binding import Binding
 from textual.containers import Container, Horizontal, Vertical, VerticalScroll
@@ -15,8 +16,6 @@ from textual.widgets import (
     Static,
 )
 from textual.widgets.option_list import Option
-
-from rich.text import Text
 
 from bro.models.feature import DEFAULT_FEATURES, Feature
 from bro.models.language import (
