@@ -1,6 +1,7 @@
 # 🚀 Bro — Developer Workspace Manager
 
-![CI](https://github.com/sameetpatro/bro/workflows/CI/badge.svg)
+[![CI](https://github.com/sameetpatro/bro/actions/workflows/ci.yml/badge.svg)](https://github.com/sameetpatro/bro/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/bro.svg)](https://pypi.org/project/bro/)
 ![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 ![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey)
