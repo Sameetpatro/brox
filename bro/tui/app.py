@@ -3,14 +3,17 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import TypeVar
 
 from textual.app import App
+
+ReturnType = TypeVar("ReturnType")
 
 # Path to the TCSS file
 STYLES_PATH = Path(__file__).parent / "styles" / "app.tcss"
 
 
-class BroApp(App[None]):
+class BroApp(App[ReturnType]):
     """Base Textual application for all Bro TUI screens."""
 
     TITLE = "Bro"
@@ -22,7 +25,7 @@ class BroApp(App[None]):
         ("escape", "back", "Back"),
     ]
 
-    def action_back(self) -> None:
+    async def action_back(self) -> None:
         """Go back / pop screen."""
         if len(self.screen_stack) > 1:
             self.pop_screen()

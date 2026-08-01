@@ -31,7 +31,7 @@ def _run_interactive(project_name: str, output_dir: str | None = None) -> None:
     from bro.tui.app import BroApp
     from bro.tui.screens.start import StartWizardApp
 
-    class StartApp(BroApp):
+    class StartApp(BroApp[ProjectConfig | None]):
         """App for the start wizard."""
 
         def on_mount(self) -> None:

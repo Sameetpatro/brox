@@ -5,10 +5,10 @@ from __future__ import annotations
 import platform
 import shutil
 import subprocess
-from enum import Enum
+from enum import StrEnum
 
 
-class OS(str, Enum):
+class OS(StrEnum):
     """Operating system detection."""
 
     WINDOWS = "windows"
@@ -20,13 +20,8 @@ class OS(str, Enum):
 def get_os() -> OS:
     """Detect the current operating system."""
     system = platform.system().lower()
-    if system == "darwin":
-        return OS.MACOS
-    elif system == "windows":
-        return OS.WINDOWS
-    elif system == "linux":
-        return OS.LINUX
-    return OS.UNKNOWN
+    mapping = {"darwin": OS.MACOS, "windows": OS.WINDOWS, "linux": OS.LINUX}
+    return mapping.get(system, OS.UNKNOWN)
 
 
 def is_command_available(command: str) -> bool:

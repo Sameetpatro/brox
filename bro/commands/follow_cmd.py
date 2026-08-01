@@ -63,11 +63,12 @@ def analyze_project(root: Path) -> ProjectAnalysis:
     for lang, indicators in LANGUAGE_INDICATORS.items():
         for indicator in indicators:
             if (root / indicator).exists():
+                import contextlib
+
                 from bro.models.language import Language
-                try:
+
+                with contextlib.suppress(ValueError):
                     analysis.language = Language(lang)
-                except ValueError:
-                    pass
                 break
 
     # Detect features
@@ -116,11 +117,12 @@ def _detect_framework_from_deps(root: Path, analysis: ProjectAnalysis) -> None:
     for fw_name, indicators in FRAMEWORK_INDICATORS.items():
         for indicator in indicators:
             if indicator.lower() in dep_lower:
+                import contextlib
+
                 from bro.models.language import Framework
-                try:
+
+                with contextlib.suppress(ValueError):
                     analysis.framework = Framework(fw_name)
-                except ValueError:
-                    pass
                 break
 
     # Detect services from deps/config
@@ -192,10 +194,7 @@ def display_analysis(analysis: ProjectAnalysis) -> None:
     console.print()
     tree = Tree(f"📁 [bold]{analysis.root_path.name}[/bold]")
     for dir_path, files in sorted(analysis.directory_structure.items()):
-        if dir_path == ".":
-            branch = tree
-        else:
-            branch = tree.add(f"📁 {dir_path}")
+        branch = tree if dir_path == "." else tree.add(f"📁 {dir_path}")
         for f in files[:10]:  # Limit files shown
             branch.add(f"📄 {f}")
         if len(files) > 10:

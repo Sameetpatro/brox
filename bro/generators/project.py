@@ -139,11 +139,10 @@ class ProjectGenerator:
                 result = run("go mod tidy", cwd=project_dir, timeout=60)
                 if not result.success:
                     logger.warning("Failed to tidy Go modules: %s", result.stderr)
-        elif lang == "rust":
-            if (project_dir / "Cargo.toml").exists():
-                result = run("cargo check", cwd=project_dir, timeout=120)
-                if not result.success:
-                    logger.warning("Failed to check Rust project: %s", result.stderr)
+        elif lang == "rust" and (project_dir / "Cargo.toml").exists():
+            result = run("cargo check", cwd=project_dir, timeout=120)
+            if not result.success:
+                logger.warning("Failed to check Rust project: %s", result.stderr)
 
     def _create_minimal_structure(self, config: ProjectConfig, project_dir: Path) -> None:
         """Create a minimal project structure when no template exists."""

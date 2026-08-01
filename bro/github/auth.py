@@ -80,7 +80,7 @@ def device_flow_auth() -> str | None:
             token_data = token_resp.json()
 
             if "access_token" in token_data:
-                token = token_data["access_token"]
+                token = str(token_data["access_token"])
                 _save_cached_token(token)
                 print_success("Successfully authenticated with GitHub!")
                 return token
@@ -109,7 +109,9 @@ def _load_cached_token() -> str | None:
     if AUTH_FILE.exists():
         try:
             data = yaml.safe_load(AUTH_FILE.read_text(encoding="utf-8"))
-            return data.get("github_token")
+            if isinstance(data, dict):
+                token = data.get("github_token")
+                return str(token) if token else None
         except Exception:
             pass
     return None

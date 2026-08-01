@@ -101,6 +101,8 @@ def _build_something(client: object) -> None:
             return
 
         # Build ProjectConfig and generate
+        import contextlib
+
         from bro.generators.project import ProjectGenerator
         from bro.models.feature import Feature
         from bro.models.language import Framework, Language
@@ -108,10 +110,8 @@ def _build_something(client: object) -> None:
 
         features = []
         for f_name in plan.get("features", []):
-            try:
+            with contextlib.suppress(ValueError):
                 features.append(Feature(f_name))
-            except ValueError:
-                pass
 
         config = ProjectConfig(
             name=project_name,

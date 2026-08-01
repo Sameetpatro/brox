@@ -75,10 +75,13 @@ def run_config() -> None:
                 continue
 
             # Convert booleans
-            if isinstance(current, bool):
-                new_value = new_value.lower() in ("true", "yes", "1", "y")
+            final_value: bool | str = (
+                new_value.lower() in ("true", "yes", "1", "y")
+                if isinstance(current, bool)
+                else new_value
+            )
 
-            manager.update(**{matched: new_value})
+            manager.update(**{matched: final_value})
             print_success(f"{matched} updated!")
             console.print()
 

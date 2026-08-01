@@ -7,6 +7,7 @@ from pathlib import Path
 import yaml
 
 from bro.config.defaults import TEMPLATES_DIR
+from bro.models.language import Framework, Language
 from bro.models.project import ProjectConfig
 from bro.models.template import TemplateConfig
 from bro.templates.renderer import TemplateRenderer
@@ -88,12 +89,11 @@ def run_use() -> None:
     template_dir = TEMPLATES_DIR / name
     renderer = TemplateRenderer()
 
-    # Create a minimal ProjectConfig for rendering
     project_config = ProjectConfig(
         name=project_name,
         display_name=project_name.replace("-", " ").title(),
-        language=config.language or "python",
-        framework=config.framework or "fastapi",
+        language=Language(config.language) if config.language else Language.PYTHON,
+        framework=Framework(config.framework) if config.framework else Framework.FASTAPI,
         features=[],
     )
 

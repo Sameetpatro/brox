@@ -115,7 +115,7 @@ class EditorConfigGenerator(BaseGenerator):
         return config.has_feature(Feature.EDITORCONFIG)
 
     def generate(self, config: ProjectConfig, project_dir: Path) -> list[Path]:
-        indent = "space" if config.language.value in ("python", "java", "kotlin") else "space"
+        indent = "space"
         size = "4" if config.language.value in ("python", "java", "kotlin", "rust") else "2"
         content = f"""root = true
 

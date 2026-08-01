@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from enum import Enum
+from enum import StrEnum
 from typing import ClassVar
 
 from pydantic import BaseModel
 
 
-class Language(str, Enum):
+class Language(StrEnum):
     """Supported programming languages."""
 
     PYTHON = "python"
@@ -70,7 +70,7 @@ class Language(str, Enum):
         return colors.get(self.value, "#AAAAAA")
 
 
-class Framework(str, Enum):
+class Framework(StrEnum):
     """Supported frameworks, organized by language."""
 
     # Python

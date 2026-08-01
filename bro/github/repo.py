@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from github import Auth, Github
+from github.AuthenticatedUser import AuthenticatedUser
 
 from bro.utils.console import print_error, print_info, print_success
 from bro.utils.logger import get_logger
@@ -27,6 +28,10 @@ def create_and_push(
         user = g.get_user()
 
         print_info(f"Creating GitHub repository: [bold]{user.login}/{repo_name}[/bold]")
+
+        if not isinstance(user, AuthenticatedUser):
+            print_error("Failed to authenticate user for repo creation.")
+            return False
 
         repo = user.create_repo(
             name=repo_name,

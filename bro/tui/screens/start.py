@@ -69,8 +69,8 @@ class LanguageStep(Screen[Language]):
         yield Footer()
 
     def on_option_list_option_selected(self, event: OptionList.OptionSelected) -> None:
-        language = Language(event.option.id)
-        self.dismiss(language)
+        if event.option.id:
+            self.dismiss(Language(event.option.id))
 
     def action_cancel(self) -> None:
         self.app.exit()
@@ -110,8 +110,8 @@ class FrameworkStep(Screen[Framework]):
         yield Footer()
 
     def on_option_list_option_selected(self, event: OptionList.OptionSelected) -> None:
-        framework = Framework(event.option.id)
-        self.dismiss(framework)
+        if event.option.id:
+            self.dismiss(Framework(event.option.id))
 
     def action_back(self) -> None:
         self.dismiss(None)

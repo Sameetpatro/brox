@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from enum import Enum
+from enum import StrEnum
 
 from pydantic import BaseModel
 
 
-class Feature(str, Enum):
+class Feature(StrEnum):
     """Selectable project features."""
 
     GIT = "git"

@@ -97,7 +97,7 @@ def get_file_size_str(path: Path) -> str:
     """Get human-readable file size."""
     if not path.exists():
         return "0 B"
-    size = path.stat().st_size
+    size: float = float(path.stat().st_size)
     for unit in ["B", "KB", "MB", "GB"]:
         if size < 1024:
             return f"{size:.1f} {unit}"

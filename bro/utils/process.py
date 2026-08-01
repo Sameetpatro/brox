@@ -32,16 +32,13 @@ def run(
     env: dict[str, str] | None = None,
 ) -> CommandResult:
     """Run a command and return the result."""
-    if isinstance(command, list):
-        cmd_str = " ".join(command)
-    else:
-        cmd_str = command
+    cmd_str = " ".join(command) if isinstance(command, list) else command
 
     logger.debug("Running: %s (cwd=%s)", cmd_str, cwd)
 
     try:
         result = subprocess.run(
-            command if isinstance(command, list) else command,
+            command,
             shell=isinstance(command, str),
             cwd=str(cwd) if cwd else None,
             capture_output=capture,
@@ -72,7 +69,7 @@ def run_streaming(
 ) -> subprocess.Popen[str]:
     """Run a command with streaming output (for long-running processes)."""
     return subprocess.Popen(
-        command if isinstance(command, list) else command,
+        command,
         shell=isinstance(command, str),
         cwd=str(cwd) if cwd else None,
         stdout=subprocess.PIPE,
