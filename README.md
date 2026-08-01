@@ -1,7 +1,7 @@
 # 🚀 Bro — Developer Workspace Manager
 
 [![CI](https://github.com/sameetpatro/bro/actions/workflows/ci.yml/badge.svg)](https://github.com/sameetpatro/bro/actions/workflows/ci.yml)
-[![PyPI](https://img.shields.io/pypi/v/bro.svg)](https://pypi.org/project/bro/)
+[![PyPI](https://img.shields.io/pypi/v/brox.svg)](https://pypi.org/project/brox/)
 ![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 ![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey)
@@ -14,17 +14,17 @@
 
 | Command | Description |
 |---------|-------------|
-| `bro start <name>` | Create a new project with an interactive TUI wizard |
-| `bro start --quick <name>` | Quick mode — only ask language & framework |
-| `bro follow` | Learning mode — analyze project architecture |
-| `bro save <name>` | Save current project as a reusable template |
-| `bro use` | Create a project from a saved template |
-| `bro delete` | Delete a saved template |
-| `bro clone` | Clone a repo with analysis and post-clone options |
-| `bro check` | Check installed development tools |
-| `bro config` | View and edit Bro configuration |
-| `bro ai` | AI-powered development assistant |
-| `bro update` | Update Bro and templates |
+| `brox start <name>` | Create a new project with an interactive TUI wizard |
+| `brox start --quick <name>` | Quick mode — only ask language & framework |
+| `brox follow` | Learning mode — analyze project architecture |
+| `brox save <name>` | Save current project as a reusable template |
+| `brox use` | Create a project from a saved template |
+| `brox delete` | Delete a saved template |
+| `brox clone` | Clone a repo with analysis and post-clone options |
+| `brox check` | Check installed development tools |
+| `brox config` | View and edit Bro configuration |
+| `brox ai` | AI-powered development assistant |
+| `brox update` | Update Bro and templates |
 
 ## 🛠️ Supported Languages & Frameworks
 
@@ -44,16 +44,16 @@
 
 ```bash
 # With pipx (recommended)
-pipx install bro
+pipx install brox
 
 # With pip
-pip install bro
+pip install brox
 
 # From source
 git clone https://github.com/sameetpatro/bro.git
 cd bro
 uv sync
-uv run bro --help
+uv run brox --help
 ```
 
 ## 🚀 Quick Start

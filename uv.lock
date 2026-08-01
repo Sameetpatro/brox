@@ -223,7 +223,7 @@ wheels = [
 ]
 
 [[package]]
-name = "bro"
+name = "brox"
 version = "1.0.0"
 source = { editable = "." }
 dependencies = [

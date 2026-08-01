@@ -1,5 +1,5 @@
 [project]
-name = "bro"
+name = "brox"
 version = "1.0.0"
 description = "The fastest and smartest Developer Workspace Manager. Create, template, learn, clone, and AI-assist your projects."
 readme = "README.md"
@@ -59,6 +59,7 @@ dev = [
 ]
 
 [project.scripts]
+brox = "bro.cli.main:app"
 bro = "bro.cli.main:app"
 
 [project.urls]

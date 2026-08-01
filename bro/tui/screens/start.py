@@ -45,6 +45,12 @@ class StepIndicator(Static):
         return "  →  ".join(parts)
 
 
+CONTACT_TEXT = (
+    " [dim]If you find any issue, contact[/dim] "
+    "[bold cyan link=https://www.linkedin.com/in/sameet-patro/]Sameet Patro on LinkedIn[/bold cyan]"
+)
+
+
 class LanguageStep(Screen[Language]):
     """Step 1: Select programming language."""
 
@@ -66,6 +72,7 @@ class LanguageStep(Screen[Language]):
             ),
             id="step-container",
         )
+        yield Static(CONTACT_TEXT, classes="contact-footer")
         yield Footer()
 
     def on_option_list_option_selected(self, event: OptionList.OptionSelected) -> None:
@@ -107,6 +114,7 @@ class FrameworkStep(Screen[Framework]):
             ),
             id="step-container",
         )
+        yield Static(CONTACT_TEXT, classes="contact-footer")
         yield Footer()
 
     def on_option_list_option_selected(self, event: OptionList.OptionSelected) -> None:
@@ -148,6 +156,7 @@ class FeatureStep(Screen[list[Feature]]):
             ),
             id="step-container",
         )
+        yield Static(CONTACT_TEXT, classes="contact-footer")
         yield Footer()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
@@ -188,6 +197,7 @@ class GitHubStep(Screen[tuple[bool, bool]]):
             ),
             id="step-container",
         )
+        yield Static(CONTACT_TEXT, classes="contact-footer")
         yield Footer()
 
     def on_option_list_option_selected(self, event: OptionList.OptionSelected) -> None:
@@ -240,6 +250,7 @@ class SummaryStep(Screen[bool]):
             ),
             id="step-container",
         )
+        yield Static(CONTACT_TEXT, classes="contact-footer")
         yield Footer()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
@@ -274,6 +285,7 @@ class StartWizardApp(Screen[ProjectConfig | None]):
             Static("\n[bold cyan]  Loading wizard...[/bold cyan]\n"),
             id="step-container",
         )
+        yield Static(CONTACT_TEXT, classes="contact-footer")
         yield Footer()
 
     def on_mount(self) -> None:
