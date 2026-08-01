@@ -47,7 +47,7 @@ class StepIndicator(Static):
 
 CONTACT_TEXT = (
     " [dim]If you find any issue, contact[/dim] "
-    "[bold cyan link=https://www.linkedin.com/in/sameet-patro/]Sameet Patro on LinkedIn[/bold cyan]"
+    "[link=https://www.linkedin.com/in/sameet-patro/][bold cyan]Sameet Patro on LinkedIn[/bold cyan][/link]"
 )
 
 
