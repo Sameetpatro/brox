@@ -1,10 +1,9 @@
 """Tests for TUI screens and markup."""
 
-from rich.markup import render
-from bro.tui.screens.start import CONTACT_TEXT
+from bro.tui.screens.start import create_contact_footer
 
 
 def test_contact_text_markup() -> None:
-    """Verify CONTACT_TEXT renders without Rich MarkupError."""
-    result = render(CONTACT_TEXT)
-    assert "Sameet Patro on LinkedIn" in result.plain
+    """Verify create_contact_footer returns styled Text without errors."""
+    text_obj = create_contact_footer()
+    assert "Sameet Patro on LinkedIn" in text_obj.plain

@@ -16,6 +16,8 @@ from textual.widgets import (
 )
 from textual.widgets.option_list import Option
 
+from rich.text import Text
+
 from bro.models.feature import DEFAULT_FEATURES, Feature
 from bro.models.language import (
     Framework,
@@ -25,30 +27,11 @@ from bro.models.language import (
 from bro.models.project import ProjectConfig
 
 
-class StepIndicator(Static):
-    """Shows current step in the wizard."""
-
-    def __init__(self, steps: list[str], current: int = 0) -> None:
-        self.steps = steps
-        self.current = current
-        super().__init__()
-
-    def render(self) -> str:
-        parts: list[str] = []
-        for i, step in enumerate(self.steps):
-            if i < self.current:
-                parts.append(f"[green]✓ {step}[/green]")
-            elif i == self.current:
-                parts.append(f"[bold cyan]● {step}[/bold cyan]")
-            else:
-                parts.append(f"[dim]○ {step}[/dim]")
-        return "  →  ".join(parts)
-
-
-CONTACT_TEXT = (
-    " [dim]If you find any issue, contact[/dim] "
-    "[link=https://www.linkedin.com/in/sameet-patro/][bold cyan]Sameet Patro on LinkedIn[/bold cyan][/link]"
-)
+def create_contact_footer() -> Text:
+    """Returns a styled Text object for the footer without string markup parsing."""
+    t = Text(" If you find any issue, contact ", style="dim")
+    t.append("Sameet Patro on LinkedIn", style="bold cyan link https://www.linkedin.com/in/sameet-patro/")
+    return t
 
 
 class LanguageStep(Screen[Language]):
@@ -72,7 +55,7 @@ class LanguageStep(Screen[Language]):
             ),
             id="step-container",
         )
-        yield Static(CONTACT_TEXT, classes="contact-footer")
+        yield Static(create_contact_footer(), classes="contact-footer")
         yield Footer()
 
     def on_option_list_option_selected(self, event: OptionList.OptionSelected) -> None:
@@ -114,7 +97,7 @@ class FrameworkStep(Screen[Framework]):
             ),
             id="step-container",
         )
-        yield Static(CONTACT_TEXT, classes="contact-footer")
+        yield Static(create_contact_footer(), classes="contact-footer")
         yield Footer()
 
     def on_option_list_option_selected(self, event: OptionList.OptionSelected) -> None:
@@ -156,7 +139,7 @@ class FeatureStep(Screen[list[Feature]]):
             ),
             id="step-container",
         )
-        yield Static(CONTACT_TEXT, classes="contact-footer")
+        yield Static(create_contact_footer(), classes="contact-footer")
         yield Footer()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
@@ -197,7 +180,7 @@ class GitHubStep(Screen[tuple[bool, bool]]):
             ),
             id="step-container",
         )
-        yield Static(CONTACT_TEXT, classes="contact-footer")
+        yield Static(create_contact_footer(), classes="contact-footer")
         yield Footer()
 
     def on_option_list_option_selected(self, event: OptionList.OptionSelected) -> None:
@@ -250,7 +233,7 @@ class SummaryStep(Screen[bool]):
             ),
             id="step-container",
         )
-        yield Static(CONTACT_TEXT, classes="contact-footer")
+        yield Static(create_contact_footer(), classes="contact-footer")
         yield Footer()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
@@ -285,7 +268,7 @@ class StartWizardApp(Screen[ProjectConfig | None]):
             Static("\n[bold cyan]  Loading wizard...[/bold cyan]\n"),
             id="step-container",
         )
-        yield Static(CONTACT_TEXT, classes="contact-footer")
+        yield Static(create_contact_footer(), classes="contact-footer")
         yield Footer()
 
     def on_mount(self) -> None:
